@@ -23,6 +23,11 @@ public class libraryController {
         return "This is the user login page";
 
     }
+    @PostMapping("/entry")
+    public String libraryEntry(){
+        return "This is the book entry page";
+
+    }
 
 
 }
