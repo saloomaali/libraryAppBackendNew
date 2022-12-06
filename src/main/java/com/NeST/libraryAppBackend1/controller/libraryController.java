@@ -33,6 +33,12 @@ public class libraryController {
         return "This is the book issue page";
 
     }
+    @PostMapping("/search")
+    public String librarySearch(){
+        return "This is the book search page";
+
+    }
+
 
 
 }
