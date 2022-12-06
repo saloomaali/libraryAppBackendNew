@@ -38,6 +38,11 @@ public class libraryController {
         return "This is the book search page";
 
     }
+    @PostMapping("/edit")
+    public String libraryEdit(){
+        return "This is the book edit page";
+
+    }
 
 
 
