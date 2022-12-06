@@ -28,6 +28,11 @@ public class libraryController {
         return "This is the book entry page";
 
     }
+    @PostMapping("/issue")
+    public String libraryIssue(){
+        return "This is the book issue page";
+
+    }
 
 
 }
