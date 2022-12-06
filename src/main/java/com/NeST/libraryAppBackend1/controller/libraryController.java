@@ -43,7 +43,11 @@ public class libraryController {
         return "This is the book edit page";
 
     }
+    @PostMapping("/delete")
+    public String libraryDelete(){
+        return "This is the book delete page";
 
+    }
 
 
 }
