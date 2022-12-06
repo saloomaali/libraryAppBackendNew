@@ -13,5 +13,16 @@ public class libraryController {
         return "welcome to libray website, this is the admin page";
 
     }
+    @PostMapping("/register")
+    public String libraryRegister(){
+        return "This is the user registration page";
+
+    }
+    @PostMapping("/login")
+    public String libraryLogin(){
+        return "This is the user login page";
+
+    }
+
 
 }
