@@ -18,6 +18,11 @@ public class libraryController {
         return "This is the user registration page";
 
     }
+    @PostMapping("/login")
+    public String libraryLogin(){
+        return "This is the user login page";
+
+    }
 
 
 }
