@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class libraryController {
 
     @PostMapping("/")
-    public String libraryWelcome(){
-        return "welcome to libray website, this is the admin page";
+    public String libraryAdmin(){
+        return "this is the admin page";
 
     }
     @PostMapping("/register")
