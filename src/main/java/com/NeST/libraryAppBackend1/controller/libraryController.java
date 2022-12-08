@@ -8,42 +8,42 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class libraryController {
 
-    @PostMapping("/")
+    @PostMapping(path = "/")
     public String libraryAdmin(){
         return "this is the admin page";
 
     }
-    @PostMapping("/register")
+    @PostMapping(path = "/register")
     public String libraryRegister(){
         return "This is the user registration page";
 
     }
-    @PostMapping("/login")
+    @PostMapping(path = "/login")
     public String libraryLogin(){
         return "This is the user login page";
 
     }
-    @PostMapping("/entry")
+    @PostMapping(path = "/entry")
     public String libraryEntry(){
         return "This is the book entry page";
 
     }
-    @PostMapping("/issue")
+    @PostMapping(path = "/issue")
     public String libraryIssue(){
         return "This is the book issue page";
 
     }
-    @PostMapping("/search")
+    @PostMapping(path = "/search")
     public String librarySearch(){
         return "This is the book search page";
 
     }
-    @PostMapping("/edit")
+    @PostMapping(path = "/edit")
     public String libraryEdit(){
         return "This is the book edit page";
 
     }
-    @PostMapping("/delete")
+    @PostMapping(path = "/delete")
     public String libraryDelete(){
         return "This is the book delete page";
 
