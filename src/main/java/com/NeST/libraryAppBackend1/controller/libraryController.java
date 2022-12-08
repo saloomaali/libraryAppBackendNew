@@ -1,53 +1,106 @@
 package com.NeST.libraryAppBackend1.controller;
 
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.NeST.libraryAppBackend1.dao.BookDao;
+import com.NeST.libraryAppBackend1.dao.IssueDao;
+import com.NeST.libraryAppBackend1.dao.RegisterDao;
+import com.NeST.libraryAppBackend1.model.Book;
+import com.NeST.libraryAppBackend1.model.IssueBook;
+import com.NeST.libraryAppBackend1.model.Register;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class libraryController {
 
+    @Autowired
+    private BookDao daob;
+
+    @Autowired
+    private RegisterDao daor;
+
+    @Autowired
+    private IssueDao daoi;
+
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/")
-    public String libraryAdmin(){
-        return "this is the admin page";
+    public HashMap<String, String> libraryAdmin(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
 
     }
-    @PostMapping(path = "/register")
-    public String libraryRegister(){
-        return "This is the user registration page";
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/register", consumes = "application/json", produces = "application/json")
+    public HashMap<String, String> libraryRegister(@RequestBody Register r){
+        daor.save(r);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
 
     }
-    @PostMapping(path = "/login")
-    public String libraryLogin(){
-        return "This is the user login page";
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/login" , consumes = "application/json", produces = "application/json")
+    public List<Register> libraryLogin(@RequestBody Register r){
+
+        return (List<Register>) daor.getUser(r.getUsername(),r.getPassword());
 
     }
-    @PostMapping(path = "/entry")
-    public String libraryEntry(){
-        return "This is the book entry page";
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/entry" , consumes = "application/json", produces = "application/json")
+    public HashMap<String, String> libraryEntry(@RequestBody Book b){
+
+        daob.save(b);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
 
     }
-    @PostMapping(path = "/issue")
-    public String libraryIssue(){
-        return "This is the book issue page";
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/issue" , consumes = "application/json", produces = "application/json")
+    public HashMap<String, String> libraryIssue(@RequestBody IssueBook i){
+
+
+        daoi.save(i);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
 
     }
-    @PostMapping(path = "/search")
-    public String librarySearch(){
-        return "This is the book search page";
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/search" , consumes = "application/json", produces = "application/json")
+    public List<Book> librarySearch(@RequestBody Book b){
+
+
+        return (List<Book>) daob.searchBook(b.getTitle());
 
     }
-    @PostMapping(path = "/edit")
-    public String libraryEdit(){
-        return "This is the book edit page";
+
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/delete" , consumes = "application/json", produces = "application/json")
+    public HashMap<String, String> libraryDelete(@RequestBody Book b){
+        daob.deleteBook(b.getId());
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
 
     }
-    @PostMapping(path = "/delete")
-    public String libraryDelete(){
-        return "This is the book delete page";
+
+    @CrossOrigin(origins = "*")
+    @GetMapping(path = "/view")
+    public List<Book> viewBook(){
+        return (List<Book>) daob.findAll();
 
     }
+
 
 
 }
